@@ -1,0 +1,908 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asraf Siddiquee</title>
+  <meta name="description" content="Portfolio of Asraf Siddiquee - Mechanical &amp; Robotics Engineer, Ph.D. Candidate at the University of Notre Dame, specializing in soft robotics, bio-inspired design, FEA and multiphysics simulation." />
+  <meta name="theme-color" content="#0b1224" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Research-themed animated background ===== -->
+  <canvas class="bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
+  <div class="bg-symbols" aria-hidden="true">
+    <span style="--x:8%;  --y:14%; --d:22s; --s:1.1rem;">∑</span>
+    <span style="--x:82%; --y:8%;  --d:28s; --s:1.4rem;">∫</span>
+    <span style="--x:18%; --y:74%; --d:32s; --s:1.2rem;">π</span>
+    <span style="--x:70%; --y:64%; --d:26s; --s:1.3rem;">∇</span>
+    <span style="--x:44%; --y:22%; --d:34s; --s:1rem;">ℏ</span>
+    <span style="--x:90%; --y:44%; --d:30s; --s:1.2rem;">λ</span>
+    <span style="--x:6%;  --y:48%; --d:36s; --s:1.1rem;">∂</span>
+    <span style="--x:56%; --y:88%; --d:24s; --s:1.3rem;">Ω</span>
+    <span style="--x:32%; --y:38%; --d:38s; --s:0.95rem;">µ</span>
+    <span style="--x:76%; --y:28%; --d:30s; --s:1rem;">σ</span>
+  </div>
+
+  <!-- ===== Loader ===== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <span class="loader__ring"></span>
+  </div>
+
+  <!-- ===== Progress Bar ===== -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#home" class="logo">A<span>N</span>S<span class="logo__dot">.</span></a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#home" class="nav__link active" data-nav>Home</a></li>
+          <li><a href="#about" class="nav__link" data-nav>About</a></li>
+          <li><a href="#education" class="nav__link" data-nav>Education</a></li>
+          <li><a href="#experience" class="nav__link" data-nav>Experience</a></li>
+          <li><a href="#projects" class="nav__link" data-nav>Projects</a></li>
+          <li><a href="#research" class="nav__link" data-nav>Research</a></li>
+          <li><a href="#skills" class="nav__link" data-nav>Skills</a></li>
+          <li><a href="#awards" class="nav__link" data-nav>Awards</a></li>
+          <li><a href="#contact" class="nav__link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="home">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__col hero__col--text">
+          <p class="hero__eyebrow reveal">Mechanical &amp; Robotics Engineer &middot; Ph.D. Candidate, University of Notre Dame</p>
+          <h1 class="hero__title reveal">
+            <span class="text-gradient">Asraf Siddiquee</span>
+          </h1>
+          <p class="hero__subtitle reveal">
+            I design, simulate, and build bio-inspired robotic systems - from underwater burrowing
+            robots to soft modular appendages - bridging mechanical design, FEA, and embedded control.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a href="#contact" class="btn btn--primary">Get in touch</a>
+            <a href="assets/cv/Siddiquee_Asraf_CV.pdf" class="btn btn--ghost" download>Download CV</a>
+          </div>
+
+          <div class="hero__socials reveal">
+            <a href="https://www.linkedin.com/in/abu-nayem-md-asraf-siddiquee" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            </a>
+            <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 9l4 2.5v7L12 22l7-3.5v-7l2-1.25V15h1.5V9L12 2zm0 2.4 7.44 4.64L12 13.5 4.56 9.04 12 4.4zM7 13.3l5 3 5-3v4.6l-5 2.5-5-2.5v-4.6z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube - Asraf's Garage">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.46-5.3a2.9 2.9 0 0 0-2-2C18.9 4.2 12 4.2 12 4.2s-6.9 0-8.54.5a2.9 2.9 0 0 0-2 2C1 8.4 1 12 1 12s0 3.6.46 5.3a2.9 2.9 0 0 0 2 2c1.64.5 8.54.5 8.54.5s6.9 0 8.54-.5a2.9 2.9 0 0 0 2-2C23 15.6 23 12 23 12zM9.75 15.5v-7l6.25 3.5-6.25 3.5z"/></svg>
+            </a>
+            <a href="mailto:nayem.asraf@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 6.5 12 13l9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__col hero__col--visual reveal">
+          <div class="showreel">
+            <div class="showreel__chrome">
+              <span class="showreel__dot"></span>
+              <span class="showreel__dot"></span>
+              <span class="showreel__dot"></span>
+              <span class="showreel__chrome-title">robot_demos.mp4</span>
+              <span class="showreel__live"><i></i>Live Footage</span>
+            </div>
+
+            <div class="showreel__stage" id="showreelStage">
+              <video id="showreelVideo" class="showreel__video" poster="assets/posters/soft-legged-robot/ground-load-carrying.jpg" src="assets/videos/soft-legged-robot/ground-load-carrying.mp4" muted loop playsinline autoplay preload="metadata"></video>
+              <div class="showreel__scan"></div>
+              <div class="showreel__meta">
+                <span class="showreel__tag" id="showreelTag">GROUND</span>
+                <span class="showreel__caption" id="showreelCaption">Load Carrying</span>
+              </div>
+            </div>
+
+            <div class="showreel__tabs" id="showreelTabs" role="tablist" aria-label="Robot demo clips">
+              <button class="showreel__tab active" role="tab" aria-selected="true"
+                data-src="assets/videos/soft-legged-robot/ground-load-carrying.mp4" data-tag="GROUND" data-caption="Load Carrying">
+                <span class="showreel__tab-num">01</span><span class="showreel__tab-label">Ground</span>
+              </button>
+              <button class="showreel__tab" role="tab" aria-selected="false"
+                data-src="assets/videos/soft-legged-robot/underwater-grasping.mp4" data-tag="UNDERWATER" data-caption="Grasping">
+                <span class="showreel__tab-num">02</span><span class="showreel__tab-label">Underwater</span>
+              </button>
+              <button class="showreel__tab" role="tab" aria-selected="false"
+                data-src="assets/videos/soft-legged-robot/ground-turning.mp4" data-tag="GROUND" data-caption="Turning">
+                <span class="showreel__tab-num">03</span><span class="showreel__tab-label">Turning</span>
+              </button>
+              <button class="showreel__tab" role="tab" aria-selected="false"
+                data-src="assets/videos/sea-star/ray-simulation.mp4" data-tag="SEA STAR" data-caption="Ray Simulation">
+                <span class="showreel__tab-num">04</span><span class="showreel__tab-label">Sea Star</span>
+              </button>
+              <button class="showreel__tab" role="tab" aria-selected="false"
+                data-src="assets/videos/sea-star/field-experiment.mp4" data-tag="SEA STAR" data-caption="Field Test">
+                <span class="showreel__tab-num">05</span><span class="showreel__tab-label">Field Test</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="hero__scroll" aria-label="Scroll to About section">
+          <span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section__eyebrow reveal">Who I Am</p>
+        <h2 class="section__title reveal">About Me</h2>
+
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p>
+              I'm a mechanical and robotics engineer with strong expertise in mechanical design,
+              simulation, and experimental validation of robotic and electromechanical systems.
+              I'm proficient in CAD-driven product development, nonlinear FEA, multiphysics
+              simulation, and physics-informed modeling - with hands-on experience in embedded
+              hardware prototyping, sensor integration, and additive manufacturing.
+            </p>
+            <p>
+              Currently a Ph.D. candidate in Electrical Engineering at the University of Notre
+              Dame's <strong>miNiRo Lab</strong>, I lead research-driven hardware projects across
+              underwater robotics, soft robotics, and energy systems - from concept through
+              testing and deployment. My work has been funded by the Department of Defense and
+              published in venues including IEEE RA-L and ICRA.
+            </p>
+
+            <div class="about__stats">
+              <div class="stat">
+                <span class="stat__num" data-count="10">0</span><span class="stat__plus">+</span>
+                <span class="stat__label">Years of Engineering Experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num" data-count="8">0</span><span class="stat__plus">+</span>
+                <span class="stat__label">Publications &amp; Papers</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num" data-count="13">0</span>
+                <span class="stat__label">Students Mentored</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num" data-count="15">0</span><span class="stat__plus">+</span>
+                <span class="stat__label">Conference Presentations</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about__card reveal">
+            <div class="info-card">
+              <ul class="info-list">
+                <li><span>Name</span><strong>Asraf Siddiquee</strong></li>
+                <li><span>Location</span><strong>South Bend, Indiana, USA</strong></li>
+                <li><span>Role</span><strong>Ph.D. Candidate, Electrical Engineering</strong></li>
+                <li><span>Lab</span><strong>miNiRo Lab, University of Notre Dame</strong></li>
+                <li><span>Focus</span><strong>Soft &amp; Bio-inspired Robotics</strong></li>
+                <li><span>Email</span><strong><a href="mailto:nayem.asraf@gmail.com">nayem.asraf@gmail.com</a></strong></li>
+              </ul>
+              <a href="assets/cv/Siddiquee_Asraf_CV.pdf" class="btn btn--primary btn--block" download>Download Full CV</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section class="section section--alt" id="education">
+      <div class="container">
+        <p class="section__eyebrow reveal">Academic Background</p>
+        <h2 class="section__title reveal">Education</h2>
+
+        <div class="timeline">
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">Expected 2027</span>
+              <h3>Ph.D. Candidate in Electrical Engineering</h3>
+              <p>University of Notre Dame, Notre Dame, IN</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">2022 – 2023</span>
+              <h3>M.S. in Electrical Engineering</h3>
+              <p>University of Notre Dame, Notre Dame, IN</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">2021 – 2022</span>
+              <h3>Master of Engineering Management</h3>
+              <p>Arkansas State University, Jonesboro, AR</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">2015 – 2017</span>
+              <h3>M.S. in Mechanical Engineering</h3>
+              <p>Arkansas State University, Jonesboro, AR</p>
+            </div>
+          </div>
+          <div class="timeline__item reveal">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__date">2009 – 2013</span>
+              <h3>B.S. in Mechanical Engineering</h3>
+              <p>Khulna University of Engineering &amp; Technology, Bangladesh</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <p class="section__eyebrow reveal">Where I've Worked</p>
+        <h2 class="section__title reveal">Experience</h2>
+
+        <div class="tabs reveal">
+          <div class="tabs__nav" role="tablist">
+            <button class="tabs__btn active" data-tab="research" role="tab" aria-selected="true">Research</button>
+            <button class="tabs__btn" data-tab="academic" role="tab" aria-selected="false">Teaching</button>
+            <button class="tabs__btn" data-tab="industry" role="tab" aria-selected="false">Industry</button>
+          </div>
+
+          <div class="tabs__panel active" data-panel="research">
+            <article class="job">
+              <div class="job__head">
+                <h3>Graduate Research &amp; Teaching Assistant</h3>
+                <span class="job__date">Aug. 2022 – Present</span>
+              </div>
+              <p class="job__org">miNiRo Lab, University of Notre Dame &middot; Notre Dame, IN</p>
+              <ul class="job__list">
+                <li>Led a 6-month DoD-funded project developing an advanced underwater burrowing robot, from conceptual design through fabrication and experimental validation.</li>
+                <li>Designed bio-inspired soft robotic systems, including multi-legged platforms for terrestrial and shallow-water exploration.</li>
+                <li>Engineered multi-material soft robotic structures and actuators integrating elastomers, composites, and embedded components.</li>
+                <li>Performed shape optimization and FEA, applying physics-informed machine learning for design optimization.</li>
+                <li>Mentored 13 graduate and visiting student researchers, resulting in 10+ conference presentations.</li>
+              </ul>
+            </article>
+            <article class="job">
+              <div class="job__head">
+                <h3>Postgraduate Research Assistant</h3>
+                <span class="job__date">Dec. 2017 – Aug. 2018</span>
+              </div>
+              <p class="job__org">Thermal Engineering Lab, Arkansas State University &middot; Jonesboro, AR</p>
+              <ul class="job__list">
+                <li>Led development of an analytical model to predict performance of a wire-plate electrostatic precipitator in an 870 MW supercritical coal-fired power plant.</li>
+                <li>Contributed to a $1.22M project on predictive modeling for transient ash deposition in post-boiler heat exchangers.</li>
+              </ul>
+            </article>
+            <article class="job">
+              <div class="job__head">
+                <h3>Graduate Research Assistant</h3>
+                <span class="job__date">Jan. 2015 – Dec. 2017</span>
+              </div>
+              <p class="job__org">Thermal Engineering Lab, Arkansas State University &middot; Jonesboro, AR</p>
+              <ul class="job__list">
+                <li>ASTA Basic Research Award ($79,379): Developed an analytical model (Maple) to predict transient behavior of vanadium redox flow batteries for renewable power plant applications.</li>
+                <li>NSF EPSCoR ($120,000): Co-managed synthesis, setup, and data collection for an advanced flow battery test-bed.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="tabs__panel" data-panel="academic">
+            <article class="job">
+              <div class="job__head">
+                <h3>Graduate Teaching Assistant</h3>
+                <span class="job__date">Fall 2023 – Fall 2025</span>
+              </div>
+              <p class="job__org">University of Notre Dame &middot; Notre Dame, IN</p>
+              <ul class="job__list">
+                <li>Mentored student teams in Experimental Robotics (EE 47072), supervising five robotic systems including bio-inspired swimmers, jumping frogs, inchworms, and tree-climbing robots.</li>
+                <li>Supervised Intro to Electrical Engineering Lab for two sections of 20 students each (Fall 2023, Fall 2025).</li>
+              </ul>
+            </article>
+            <article class="job">
+              <div class="job__head">
+                <h3>Graduate Teaching Assistant</h3>
+                <span class="job__date">Fall 2021 – Spring 2022</span>
+              </div>
+              <p class="job__org">Arkansas State University &middot; Jonesboro, AR</p>
+              <ul class="job__list">
+                <li>ENGR 3473 Fluid Mechanics: graded homework, supported instruction via consultations.</li>
+                <li>ENGR 3471 Fluid Mechanics Lab: supervised experiments, guided data analysis.</li>
+              </ul>
+            </article>
+            <article class="job">
+              <div class="job__head">
+                <h3>Instructor of Mechanical Engineering</h3>
+                <span class="job__date">Aug. 2018 – May 2019</span>
+              </div>
+              <p class="job__org">Arkansas State University &middot; Jonesboro, AR</p>
+              <ul class="job__list">
+                <li>Delivered instruction in Concepts of Engineering, Dynamics, Engineering Thermodynamics I, and Fluid Mechanics Lab.</li>
+                <li>Supervised Arduino-based mechatronic design projects for 17 undergraduates; judge at the A-State Arduino Fair.</li>
+                <li>Contributed to ABET accreditation activities and integrated SolidWorks simulation into the curriculum.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="tabs__panel" data-panel="industry">
+            <article class="job">
+              <div class="job__head">
+                <h3>Hardware Engineer Intern</h3>
+                <span class="job__date">Jan. 2020 – Jul. 2021</span>
+              </div>
+              <p class="job__org">AceOne Technologies &middot; Jonesboro, AR</p>
+              <ul class="job__list">
+                <li>Developed embedded C++/Arduino firmware for real-time acquisition and control of servo, vibration, IR, current, temperature, and pressure sensors with cloud-based logging.</li>
+                <li>Collaborated on PackRight smart device hardware, including enclosure redesign and high-accuracy temperature sensor integration.</li>
+                <li>Implemented GPS and Bluetooth modules for multi-sensor data fusion and remote monitoring.</li>
+                <li>Redesigned and fabricated Montana Mask prototypes via additive manufacturing during COVID-19.</li>
+              </ul>
+            </article>
+            <article class="job">
+              <div class="job__head">
+                <h3>Mechanical Engineer (Volunteer)</h3>
+                <span class="job__date">May 2019 – Jan. 2020</span>
+              </div>
+              <p class="job__org">A-State Innovate, The Garage &middot; Jonesboro, AR</p>
+              <ul class="job__list">
+                <li>Designed and fabricated soft robotic structures and prototype components using FDM and epoxy resin casting.</li>
+                <li>Applied FEA, GD&amp;T (ASME Y14.5), and DFAM principles to improve structural integrity and manufacturability.</li>
+              </ul>
+            </article>
+            <article class="job">
+              <div class="job__head">
+                <h3>Mechanical Design &amp; Prototyping Engineer</h3>
+                <span class="job__date">Oct. 2013 – Jan. 2015</span>
+              </div>
+              <p class="job__org">Adroit Engineers &middot; Dhaka, Bangladesh</p>
+              <ul class="job__list">
+                <li>Led mechanical design and FEA of electromechanical medical devices, including an automated wheelchair and an electric hospital bed.</li>
+                <li>Designed PCBs and embedded C/C++ control software for biomedical devices.</li>
+                <li>Optimized wheelchair structural design, reducing mass and manufacturing cost by 7%.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects (Video Showcase) ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="section__eyebrow reveal">Robots In Action</p>
+        <h2 class="section__title reveal">Featured Projects</h2>
+
+        <div class="project reveal">
+          <div class="project__head">
+            <div>
+              <span class="project__tag">DoD-Funded &middot; miNiRo Lab</span>
+              <h3>Sea Star-Inspired Modular Robot</h3>
+              <p>A modular, sea star-inspired robot with autonomous, detachable rays — exploring
+                autotomy-driven robustness through morphological design, passive anisotropic
+                friction, and multi-arm reconfiguration for underwater and terrestrial locomotion.</p>
+            </div>
+          </div>
+          <div class="video-grid">
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/quad-locomotion.mp4" poster="assets/posters/sea-star/quad-locomotion.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Quadruped Locomotion" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Sea Star</span><span class="video-card__title">Quadruped Locomotion</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/three-arm-morphology.mp4" poster="assets/posters/sea-star/three-arm-morphology.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Three-Arm Morphology" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Sea Star</span><span class="video-card__title">Three-Arm Morphology</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/four-ray-morphology.mp4" poster="assets/posters/sea-star/four-ray-morphology.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Four-Ray Morphology" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Sea Star</span><span class="video-card__title">Four-Ray Morphology</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/single-ray-test.mp4" poster="assets/posters/sea-star/single-ray-test.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Single-Ray Test" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Sea Star</span><span class="video-card__title">Single-Ray Test</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/ray-simulation.mp4" poster="assets/posters/sea-star/ray-simulation.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Ray Simulation" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Simulation</span><span class="video-card__title">Ray Simulation</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/skin-actuation.mp4" poster="assets/posters/sea-star/skin-actuation.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Skin Actuation" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Sea Star</span><span class="video-card__title">Skin Actuation</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/sea-star/field-experiment.mp4" poster="assets/posters/sea-star/field-experiment.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Field Experiment" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Field Test</span><span class="video-card__title">Field Experiment</span></figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="project reveal">
+          <div class="project__head">
+            <div>
+              <span class="project__tag">Bio-Inspired &middot; miNiRo Lab</span>
+              <h3>Soft, Multi-Legged Robotic Swimmer</h3>
+              <p>A bio-inspired, multi-legged soft robot with modular appendages, engineered for
+                cross-environmental locomotion — walking, turning, and grasping on ground, and
+                swimming and manipulating objects underwater.</p>
+            </div>
+          </div>
+          <div class="video-grid">
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/ground-load-carrying.mp4" poster="assets/posters/soft-legged-robot/ground-load-carrying.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Ground Load Carrying" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Ground</span><span class="video-card__title">Load Carrying</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/ground-backward.mp4" poster="assets/posters/soft-legged-robot/ground-backward.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Ground Backward" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Ground</span><span class="video-card__title">Backward</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/ground-turning.mp4" poster="assets/posters/soft-legged-robot/ground-turning.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Ground Turning" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Ground</span><span class="video-card__title">Turning</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/ground-grasping.mp4" poster="assets/posters/soft-legged-robot/ground-grasping.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Ground Grasping" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Ground</span><span class="video-card__title">Grasping</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/ground-grasping-2.mp4" poster="assets/posters/soft-legged-robot/ground-grasping-2.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Ground Grasping Alt" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Ground</span><span class="video-card__title">Grasping (Alt.)</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/underwater-load-carrying.mp4" poster="assets/posters/soft-legged-robot/underwater-load-carrying.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Underwater Load Carrying" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Underwater</span><span class="video-card__title">Load Carrying</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/underwater-backward.mp4" poster="assets/posters/soft-legged-robot/underwater-backward.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Underwater Backward" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Underwater</span><span class="video-card__title">Backward</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/underwater-turning.mp4" poster="assets/posters/soft-legged-robot/underwater-turning.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Underwater Turning" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Underwater</span><span class="video-card__title">Turning</span></figcaption>
+            </figure>
+            <figure class="video-card">
+              <div class="video-card__frame">
+                <video data-src="assets/videos/soft-legged-robot/underwater-grasping.mp4" poster="assets/posters/soft-legged-robot/underwater-grasping.jpg" muted loop playsinline preload="none"></video>
+                <button class="video-card__play" aria-label="Play Underwater Grasping" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+              <figcaption><span class="video-card__tag">Underwater</span><span class="video-card__title">Grasping</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Research / Publications ===== -->
+    <section class="section section--alt" id="research">
+      <div class="container">
+        <p class="section__eyebrow reveal">Publications &amp; Presentations</p>
+        <h2 class="section__title reveal">Research Output</h2>
+
+        <div class="research__group reveal">
+          <h3 class="research__heading">Journal Articles</h3>
+          <ul class="pub-list">
+            <li>
+              <span class="pub-list__badge">Under Review</span>
+              <div class="pub-list__body">
+                <em>Design and Simulation of Soft, Multi-Legged Robotic Swimmer for Shallow Water Locomotion.</em>
+                <span class="pub-list__authors">Siddiquee, A. N. M. A., &amp; Ozkan-Aydin, Y.</span>
+              </div>
+            </li>
+            <li>
+              <span class="pub-list__badge pub-list__badge--pub">2024</span>
+              <div class="pub-list__body">
+                <em>Utilizing Bioinspired Soft Modular Appendages for Grasping and Locomotion in Multi-Legged Robots on Ground and Underwater.</em>
+                <span class="pub-list__authors">Siddiquee, A. N. M. A., &amp; Ozkan-Aydin, Y.</span>
+                <span class="pub-list__venue">IEEE Robotics and Automation Letters (RA-L)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="research__group reveal">
+          <h3 class="research__heading">Conference Papers</h3>
+          <ul class="pub-list">
+            <li>
+              <span class="pub-list__badge">Under Review</span>
+              <div class="pub-list__body">
+                <em>A Modular, Sea Star-Inspired Robot with Autonomous Rays: Autotomy-driven Robustness through Morphological Design.</em>
+                <span class="pub-list__authors">Siddiquee, A. N. M. A., Castillo Gonzalez, M., Utama, V., Zhu, Y., &amp; Ozkan-Aydin, Y. (2026).</span>
+              </div>
+            </li>
+            <li>
+              <span class="pub-list__badge pub-list__badge--pub">2016</span>
+              <div class="pub-list__body">
+                <em>Conjugated Dynamic Modeling on Vanadium Redox Flow Battery With Non-Constant Variance for Renewable Power Plant Applications.</em>
+                <span class="pub-list__authors">Siddiquee, A., &amp; Jeong, K.</span>
+                <span class="pub-list__venue">ASME IMECE2016-67462, Phoenix, AZ</span>
+              </div>
+            </li>
+            <li>
+              <span class="pub-list__badge pub-list__badge--pub">2019</span>
+              <div class="pub-list__body">
+                <em>Modeling for Blended Coal Combustion and its Impact on Ash Deposition in Full-Scale Post-Boiler Equipment.</em>
+                <span class="pub-list__authors">Jeong, K., Saifujjaman, M., Aryal, S., Tamang, S., Siddiquee, A., &amp; Lee, S.</span>
+                <span class="pub-list__venue">12th Asia-Pacific Conference on Combustion</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="research__group reveal">
+          <h3 class="research__heading">Selected Presentations</h3>
+          <div class="pres-grid" id="presGrid">
+            <div class="pres-card">
+              <span class="pres-card__tag">Oral · 2026</span>
+              <p>Design and simulation of soft, multi-legged robotic swimmer for shallow water locomotion - <strong>SICB 2026</strong>, Portland, OR.</p>
+            </div>
+            <div class="pres-card">
+              <span class="pres-card__tag">Oral · 2025</span>
+              <p>Utilizing bioinspired soft modular appendages for grasping and locomotion - <strong>IEEE ICRA 2025</strong>, Atlanta, GA.</p>
+            </div>
+            <div class="pres-card">
+              <span class="pres-card__tag">Oral · 2025</span>
+              <p>Bioinspired, modular, hybrid quadruped robot for underwater exploration &amp; manipulation - <strong>SICB 2025</strong>, Atlanta, GA.</p>
+            </div>
+            <div class="pres-card pres-card--hidden">
+              <span class="pres-card__tag">Oral · 2026</span>
+              <p>The impact of passive anisotropic friction on locomotion of a modular, sea star-inspired robot - <strong>SICB 2026</strong>, Portland, OR.</p>
+            </div>
+            <div class="pres-card pres-card--hidden">
+              <span class="pres-card__tag">Poster · 2026</span>
+              <p>Design, simulation, and locomotion analysis of a modular sea star-inspired robotic ray - <strong>MWRW 2026</strong>, Chicago, IL.</p>
+            </div>
+            <div class="pres-card pres-card--hidden">
+              <span class="pres-card__tag">Invited · 2025</span>
+              <p>Cross-Environmental Locomotion: Bioinspired Soft Modular Robot for Search &amp; Rescue - <strong>Indiana Science Communication Day</strong>, Indianapolis, IN.</p>
+            </div>
+            <div class="pres-card pres-card--hidden">
+              <span class="pres-card__tag">Oral · 2018</span>
+              <p>Performance prediction modeling of a full-scale electrostatic precipitator - <strong>ASME IMECE</strong>, Pittsburgh, PA.</p>
+            </div>
+            <div class="pres-card pres-card--hidden">
+              <span class="pres-card__tag">Poster · 2024</span>
+              <p>Design and development of bioinspired soft modular appendages for object manipulation - <strong>MWRW 2024</strong>, Chicago, IL.</p>
+            </div>
+          </div>
+          <button class="btn btn--ghost btn--sm" id="presToggle">Show all 15 presentations</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Mentorship ===== -->
+    <section class="section" id="mentorship">
+      <div class="container">
+        <p class="section__eyebrow reveal">Giving Back</p>
+        <h2 class="section__title reveal">Mentorship &amp; Service</h2>
+
+        <div class="mentor__grid">
+          <div class="mentor__text reveal">
+            <p>
+              I've mentored 13 visiting scholars, undergraduate researchers, and lab interns -
+              guiding original research from conceptual design through fabrication,
+              experimentation, and dissemination - under the supervision of Dr. Yasemin
+              Ozkan-Aydin at the University of Notre Dame, resulting in 10+ oral and poster
+              presentations.
+            </p>
+            <div class="chip-group">
+              <span class="chip">Raafe Rahman - Purdue University</span>
+              <span class="chip">Duolan Sheng - Stony Brook University</span>
+              <span class="chip">Aria Meyer - Notre Dame</span>
+              <span class="chip">Robert J. Urquhart - University of Galway</span>
+              <span class="chip">Yuhan Zhu - Visiting Student, China</span>
+              <span class="chip">Martín E. Castillo González - PUC Chile</span>
+              <span class="chip">+7 more mentees</span>
+            </div>
+          </div>
+
+          <div class="service__list reveal">
+            <h3 class="research__heading">Professional Service</h3>
+            <ul class="check-list">
+              <li>Reviewer, IEEE IROS 2024</li>
+              <li>Volunteer, IEEE IROS 2023 &amp; SICB Annual Meeting 2025</li>
+              <li>Coach, Innovate-o-Thon (7 sessions), Notre Dame / Marmon Group</li>
+              <li>Judge, Northern Indiana Regional Science &amp; Engineering Fair (2026)</li>
+              <li>Judge, COSE-JAM Engineering Undergraduate Poster Competition (2025, 2026)</li>
+              <li>Technical Judge, A-State Arduino Fair (2018)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <p class="section__eyebrow reveal">What I Work With</p>
+        <h2 class="section__title reveal">Technical Skills</h2>
+
+        <div class="skills__grid">
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+            </div>
+            <h3>Mechanical Design &amp; Fabrication</h3>
+            <div class="tag-row">
+              <span>SolidWorks</span><span>Fusion 360</span><span>Siemens NX</span><span>AutoCAD</span><span>Rhino 3D</span><span>3D Printing</span><span>Laser Cutting</span><span>Multi-Material Integration</span>
+            </div>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h1"/></svg>
+            </div>
+            <h3>Simulation &amp; Analysis</h3>
+            <div class="tag-row">
+              <span>Abaqus</span><span>COMSOL</span><span>ANSYS Fluent</span><span>ANSYS Workbench</span><span>Nonlinear FEA</span><span>Multiphysics Modeling</span>
+            </div>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg>
+            </div>
+            <h3>Programming</h3>
+            <div class="tag-row">
+              <span>Python</span><span>MATLAB</span><span>Maple</span>
+            </div>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h1v1H9zM14 9h1v1h-1zM9 14h1v1H9zM14 14h1v1h-1zM2 8h2M2 16h2M20 8h2M20 16h2M8 2v2M16 2v2M8 20v2M16 20v2"/></svg>
+            </div>
+            <h3>Electronics &amp; Embedded Systems</h3>
+            <div class="tag-row">
+              <span>Arduino</span><span>Embedded C++</span><span>Sensor Integration</span><span>Hardware Prototyping</span><span>PCB Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Awards ===== -->
+    <section class="section" id="awards">
+      <div class="container">
+        <p class="section__eyebrow reveal">Recognition</p>
+        <h2 class="section__title reveal">Honors &amp; Awards</h2>
+
+        <div class="awards__grid">
+          <div class="award-card reveal">
+            <span class="award-card__year">2026–2027</span>
+            <h3>Edison Innovation Fellowship</h3>
+            <p>University of Notre Dame IDEA Center - one of 10 graduate fellows university-wide; $17,077.50 stipend for research commercialization &amp; technology derisking.</p>
+          </div>
+          <div class="award-card reveal">
+            <span class="award-card__year">Notre Dame</span>
+            <h3>TEEWS Graduate Incubator &amp; Fellowship</h3>
+            <p>Recognizing research excellence and innovation in engineering.</p>
+          </div>
+          <div class="award-card reveal">
+            <span class="award-card__year">2025</span>
+            <h3>IEEE ICRA Conference Travel Grant</h3>
+            <p>$1,500 travel award to present research at ICRA 2025, Atlanta, GA.</p>
+          </div>
+          <div class="award-card reveal">
+            <span class="award-card__year">Notre Dame</span>
+            <h3>James L. Massey Travel Grant</h3>
+            <p>Awarded three times ($750 each) to support conference travel.</p>
+          </div>
+          <div class="award-card reveal">
+            <span class="award-card__year">Notre Dame</span>
+            <h3>Innovate-o-Thon Judge Grant</h3>
+            <p>Awarded seven times ($250 each), University of Notre Dame / Marmon Holdings Inc.</p>
+          </div>
+          <div class="award-card reveal">
+            <span class="award-card__year">2005</span>
+            <h3>Math Olympiad of Bangladesh</h3>
+            <p>Regional 2nd Runner-Up - Top 72 nationwide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <p class="section__eyebrow reveal">Let's Connect</p>
+        <h2 class="section__title reveal">Get In Touch</h2>
+        <p class="contact__lede reveal">
+          Open to research collaborations, hardware consulting, and conversations about robotics.
+          Feel free to reach out - I usually reply within a couple of days.
+        </p>
+
+        <div class="contact__grid">
+          <div class="contact__cta reveal">
+            <div class="contact__cta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>
+            </div>
+            <h3>Prefer email?</h3>
+            <p>The fastest way to reach me is directly by email. Click below to open your email client with my address ready to go.</p>
+            <a href="mailto:nayem.asraf@gmail.com?subject=Hello%20Asraf" class="btn btn--primary btn--block">Write an Email</a>
+            <span class="contact__cta-address">nayem.asraf@gmail.com</span>
+          </div>
+
+          <div class="contact__info reveal">
+            <a class="contact__card" href="mailto:nayem.asraf@gmail.com">
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>
+              </div>
+              <div>
+                <span>Email</span>
+                <strong>nayem.asraf@gmail.com</strong>
+              </div>
+            </a>
+            <a class="contact__card" href="tel:+18702739430">
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <span>Phone</span>
+                <strong>+1 (870) 273-9430</strong>
+              </div>
+            </a>
+            <a class="contact__card" href="#" target="_blank" rel="noopener noreferrer">
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" fill="currentColor" stroke="none"/></svg>
+              </div>
+              <div>
+                <span>LinkedIn</span>
+                <strong>Asraf Siddiquee</strong>
+              </div>
+            </a>
+            <div class="contact__card contact__card--static">
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <span>Location</span>
+                <strong>South Bend, Indiana, USA</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#home" class="logo logo--footer">A<span>N</span>S<span class="logo__dot">.</span></a>
+      <p>&copy; <span id="year"></span> Asraf Siddiquee. All rights reserved.</p>
+      <div class="footer__socials">
+        <a href="https://www.linkedin.com/in/abu-nayem-md-asraf-siddiquee" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="mailto:nayem.asraf@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 6.5 9 6.5 9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.46-5.3a2.9 2.9 0 0 0-2-2C18.9 4.2 12 4.2 12 4.2s-6.9 0-8.54.5a2.9 2.9 0 0 0-2 2C1 8.4 1 12 1 12s0 3.6.46 5.3a2.9 2.9 0 0 0 2 2c1.64.5 8.54.5 8.54.5s6.9 0 8.54-.5a2.9 2.9 0 0 0 2-2C23 15.6 23 12 23 12zM9.75 15.5v-7l6.25 3.5-6.25 3.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
