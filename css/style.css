@@ -1096,13 +1096,13 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   .tabs__btn { padding: 9px 14px; font-size: 0.8rem; }
 }
 
-/* Landscape phones — keep hero readable */
+/* Landscape phones - keep hero readable */
 @media (max-height: 500px) and (orientation: landscape) {
   .hero { min-height: auto; padding-block: calc(var(--header-h) + 2rem) 3rem; }
   .hero__scroll { display: none; }
 }
 
-/* High-DPI large screens — cap content width */
+/* High-DPI large screens - cap content width */
 @media (min-width: 1440px) {
   .container { max-width: 1240px; }
 }
