@@ -566,18 +566,61 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .tabs__panel.active { display: block; animation: fadeIn 0.4s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
+/* --- Experience: timeline layout --- */
+.tabs__panel.active { position: relative; }
+.tabs__panel.active::before {
+  content: '';
+  position: absolute;
+  left: 165px;
+  top: 10px; bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--accent) 40%, transparent),
+    color-mix(in srgb, var(--accent-3) 40%, transparent));
+  border-radius: 2px;
+}
+
 .job {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 1.8rem 2rem;
+  padding: 1.5rem 1.8rem 1.6rem;
+  margin-left: 185px;
   margin-bottom: 1.4rem;
   transition: border-color var(--transition), transform var(--transition);
 }
-.job:hover { border-color: var(--accent); transform: translateY(-2px); }
-.job__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; }
-.job__head h3 { font-size: 1.1rem; }
-.job__date { font-size: 0.8rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
+.job:hover { border-color: var(--accent); transform: translateX(3px); }
+
+/* Timeline dot anchored to the vertical line */
+.job::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 1.9rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+/* Date lives OUTSIDE the card, pinned to the timeline track */
+.job__date {
+  position: absolute;
+  left: -185px;
+  top: 1.65rem;
+  width: 150px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.job__body { display: block; }
+.job__title { font-size: 1.1rem; margin-bottom: 0.2rem; }
 .job__org { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1rem; }
 .job__list li {
   position: relative; padding-left: 20px; margin-bottom: 8px;
@@ -600,6 +643,26 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 }
 .proj:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
 .proj:last-child { margin-bottom: 0; }
+
+/* Projects with figures: text left / images right (desktop only) */
+@media (min-width: 961px) {
+  .proj:has(.proj__figures) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    grid-template-areas:
+      "head figs"
+      "desc figs"
+      "high figs";
+    column-gap: 2.4rem;
+    row-gap: 0.6rem;
+    align-items: start;
+  }
+  .proj:has(.proj__figures) .proj__header     { grid-area: head; margin-bottom: 0.4rem; }
+  .proj:has(.proj__figures) .proj__desc       { grid-area: desc; max-width: none; margin-bottom: 0.6rem; }
+  .proj:has(.proj__figures) .proj__highlights { grid-area: high; max-width: none; margin-bottom: 0; }
+  .proj:has(.proj__figures) .proj__figures    { grid-area: figs; grid-template-columns: repeat(2, 1fr); }
+  .proj:has(.proj__figures) .proj__fig--hero  { grid-column: 1 / -1; }
+}
 
 .proj__header {
   display: flex; align-items: flex-start; gap: 1.2rem;
@@ -1051,8 +1114,23 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   .tabs__nav::-webkit-scrollbar { display: none; }
   .tabs__btn { flex: 0 0 auto; padding: 10px 18px; font-size: 0.85rem; }
 
-  .job__head { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .job__date { font-size: 0.78rem; }
+  .job { margin-left: 0; padding: 1.3rem 1.3rem 1.4rem; }
+  .job::before { display: none; }
+  .job__date {
+    position: static;
+    width: auto;
+    text-align: left;
+    padding-right: 0;
+    display: inline-block;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    margin-bottom: 0.9rem;
+    top: auto; left: auto;
+  }
+  .tabs__panel.active::before { display: none; }
 
   .footer__inner { flex-direction: column; text-align: center; }
 
@@ -1073,7 +1151,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 
   .info-card, .skill-card, .contact__cta { padding: 1.3rem; }
   .job { padding: 1.2rem; }
-  .job__head h3 { font-size: 1rem; }
+  .job__title { font-size: 1rem; }
   .job__list li { font-size: 0.88rem; }
 
   .info-list li { flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 0; }
