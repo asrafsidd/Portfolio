@@ -688,8 +688,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   transition: background 0.2s;
 }
 .proj__yt-thumb:hover .proj__yt-play { background: var(--accent); }
-.proj__yt-thumb { max-width: 380px; }
 .proj__yt-thumb img { width: 100%; border-radius: var(--radius-md); display: block; }
+/* Smaller gripper thumbnails only on wide desktop grid; full width when stacked */
+@media (min-width: 961px) {
+  .proj__yt-thumb { max-width: 380px; }
+}
 
 /* Video inside proj figure */
 .proj__video { width: 100%; border-radius: var(--radius-md); display: block; max-height: 360px; object-fit: cover; }
