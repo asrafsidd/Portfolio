@@ -650,18 +650,30 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .proj:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
 .proj:last-child { margin-bottom: 0; }
 
-/* Ongoing project image banner */
-.proj--ongoing { border-left: 3px solid #f5a623; }
+/* Ongoing project — text left, banner image right */
+.proj--ongoing {
+  border-left: 3px solid #f5a623;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.proj__ongoing-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
 .proj__ongoing-img {
+  flex-shrink: 0;
   display: block;
   width: 180px;
   height: auto;
-  margin-bottom: 0.9rem;
-  border-radius: 6px;
+  border-radius: 8px;
   object-fit: cover;
   object-position: center;
 }
-@media (max-width: 480px) { .proj__ongoing-img { width: 130px; } }
+@media (max-width: 720px) {
+  .proj--ongoing { flex-direction: column; }
+  .proj__ongoing-img { width: 100%; max-width: 280px; }
+}
 
 /* YouTube thumbnail overlay for project figures */
 .proj__yt-thumb { position: relative; display: block; }
