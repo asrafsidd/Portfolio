@@ -704,8 +704,15 @@ a.proj__media-box:hover { border-color: var(--accent); box-shadow: var(--shadow-
 }
 a.proj__media-box:hover img { transform: scale(1.02); }
 .proj__media-box--contain { background: #0a0d14; }
-/* YouTube thumbnails fill the frame (16:9 source) */
-.proj__media-box--yt img { object-fit: cover; }
+/* YouTube thumbnails: inset slightly so they read at the same visual size as other media */
+.proj__media-box--yt { background: #0a0d18; padding: 16px; }
+.proj__media-box--yt img {
+  position: absolute; inset: 16px;
+  width: auto; height: auto;
+  max-width: calc(100% - 32px); max-height: calc(100% - 32px);
+  object-fit: cover;
+  border-radius: 8px;
+}
 
 /* Two images sharing one media frame (project 5) */
 .proj__media-duo {
