@@ -801,7 +801,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .proj__fig--hero {
   grid-column: 1 / -1;
 }
-.proj__fig a {
+.proj__fig > a {
   display: block;
   aspect-ratio: 16 / 9;
   position: relative;
@@ -811,7 +811,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   background: #0a0d18;
   transition: border-color var(--transition), box-shadow var(--transition);
 }
-.proj__fig a:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+.proj__fig > a:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
 .proj__fig img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -819,7 +819,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   display: block;
   transition: transform 0.5s ease;
 }
-.proj__fig a:hover img { transform: scale(1.03); }
+.proj__fig > a:hover img { transform: scale(1.03); }
 
 .proj__fig figcaption {
   padding: 0.5rem 0.2rem 0;
@@ -828,6 +828,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   color: var(--text-muted);
   letter-spacing: 0.2px;
 }
+.proj__fig figcaption a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.proj__fig figcaption a:hover { text-decoration: underline; }
 
 /* ---------- Research / Publications ---------- */
 .research__group { margin-bottom: 3rem; }
