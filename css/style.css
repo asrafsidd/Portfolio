@@ -464,7 +464,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .showreel__tab.active .showreel__tab-num { color: var(--accent); }
 
 /* ---------- Section Base ---------- */
-.section { padding: 7rem 0; position: relative; }
+.section { padding: 5rem 0; position: relative; }
 .section--alt { background: var(--bg-alt); }
 .section__eyebrow {
   font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px;
@@ -617,9 +617,14 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   letter-spacing: 0.3px;
   text-align: right;
   padding-right: 10px;
+  white-space: nowrap;
 }
 
-.job__body { display: block; }
+.job__body { display: block; flex: 1 1 0; min-width: 0; }
+.job--with-img { display: flex; align-items: flex-start; gap: 1.4rem; }
+.job__img-link { flex-shrink: 0; }
+.job__img { width: 180px; border-radius: var(--radius-md); object-fit: cover; display: block; border: 1px solid var(--border); }
+@media (max-width: 720px) { .job--with-img { flex-direction: column; } .job__img { width: 100%; max-width: 320px; } }
 .job__title { font-size: 1.1rem; margin-bottom: 0.2rem; }
 .job__org { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1rem; }
 .job__list li {
@@ -634,15 +639,43 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 
 /* ---------- Projects ---------- */
 .proj {
-  margin-bottom: 3.5rem;
-  padding: 2.2rem 2.4rem 2.4rem;
+  margin-bottom: 2rem;
+  padding: 1.6rem 1.8rem 1.8rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
 }
 .proj:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
 .proj:last-child { margin-bottom: 0; }
+
+/* Ongoing project badge */
+.proj--ongoing { border-left: 3px solid var(--accent-3); }
+.proj__ongoing-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--accent-3);
+  background: color-mix(in srgb, var(--accent-3) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-3) 30%, transparent);
+  border-radius: 20px; padding: 4px 10px 4px 8px;
+  margin-bottom: 0.8rem;
+}
+
+/* YouTube thumbnail overlay for project figures */
+.proj__yt-thumb { position: relative; display: block; }
+.proj__yt-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(0,0,0,0.65); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.proj__yt-thumb:hover .proj__yt-play { background: var(--accent); }
+.proj__yt-thumb img { width: 100%; border-radius: var(--radius-md); display: block; }
+
+/* Video inside proj figure */
+.proj__video { width: 100%; border-radius: var(--radius-md); display: block; max-height: 360px; object-fit: cover; }
 
 /* Projects with figures: text left / images right (desktop only) */
 @media (min-width: 961px) {
@@ -725,6 +758,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
+.proj__figures--one  { grid-template-columns: 1fr; }
 .proj__figures--two  { grid-template-columns: repeat(2, 1fr); }
 .proj__figures--three { grid-template-columns: repeat(3, 1fr); }
 
@@ -831,6 +865,26 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 }
 .pub-list__authors { font-size: 0.88rem; color: var(--text-muted); }
 .pub-list__venue { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+.pub-list__li--media { align-items: center; }
+.pub-list__thumb-link {
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  width: 100px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-left: auto;
+}
+.pub-list__thumb { width: 100%; display: block; object-fit: cover; aspect-ratio: 16/9; }
+.pub-list__thumb-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(0,0,0,0.6); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.pub-list__thumb-link:hover .pub-list__thumb-play { background: var(--accent); }
+@media (max-width: 480px) { .pub-list__thumb-link { width: 70px; } }
 .pub-list__badge {
   align-self: start; justify-self: start;
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
