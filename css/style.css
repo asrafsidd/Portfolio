@@ -851,7 +851,7 @@ a.proj__media-box--yt:hover .proj__yt-play { background: var(--accent); }
   flex-shrink: 0;
   position: relative;
   display: block;
-  width: 260px;
+  width: 280px;
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-left: 1.2rem;
