@@ -688,6 +688,8 @@ a.proj__media-box:hover { border-color: var(--accent); box-shadow: var(--shadow-
 .proj__media-box img { object-fit: contain; }
 /* Video fills the frame */
 .proj__media-box video { object-fit: cover; }
+/* ANDBot clip has baked-in black on the right; zoom from the left to crop it out */
+.proj__media-box--andbot video { transform: scale(1.32); transform-origin: left center; }
 a.proj__media-box:hover img { transform: scale(1.02); }
 .proj__media-box--contain { background: #0a0d14; }
 /* YouTube thumbnails fill the frame (16:9 source) */
