@@ -851,7 +851,7 @@ a.proj__media-box--yt:hover .proj__yt-play { background: var(--accent); }
   flex-shrink: 0;
   position: relative;
   display: block;
-  width: 200px;
+  width: 260px;
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-left: 1.2rem;
@@ -865,7 +865,7 @@ a.proj__media-box--yt:hover .proj__yt-play { background: var(--accent); }
   transition: background 0.2s;
 }
 .pub-list__thumb-link:hover .pub-list__thumb-play { background: var(--accent); }
-@media (max-width: 720px) { .pub-list__thumb-link { width: 130px; } }
+@media (max-width: 720px) { .pub-list__thumb-link { width: 170px; } }
 @media (max-width: 480px) { .pub-list__thumb-link { width: 100%; margin-left: 0; margin-top: 0.8rem; } }
 @media (max-width: 480px) { .pub-list__li--media { flex-wrap: wrap; } }
 .pub-list__badge {
