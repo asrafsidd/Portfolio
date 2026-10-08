@@ -689,7 +689,16 @@ a.proj__media-box:hover { border-color: var(--accent); box-shadow: var(--shadow-
 /* Video fills the frame */
 .proj__media-box video { object-fit: cover; }
 /* ANDBot clip has baked-in black on the right; zoom from the left to crop it out */
-.proj__media-box--andbot video { transform: scale(1.32); transform-origin: left 20%; }
+/* ANDBot clip: montage fills left 75.7% of a 16:9 frame (right 24.3% is baked-in black).
+   Give this box the montage's real ~1.39 aspect and map the content region to fill it,
+   so the whole montage shows with no cropping and no black. */
+.proj__media-box--andbot { aspect-ratio: 2905 / 2088; }
+.proj__media-box--andbot video {
+  inset: auto; top: 0; left: 0;
+  width: 132.1%; height: auto; max-width: none;
+  object-fit: fill;
+  transform: translateY(-3.3%);
+}
 a.proj__media-box:hover img { transform: scale(1.02); }
 .proj__media-box--contain { background: #0a0d14; }
 /* YouTube thumbnails fill the frame (16:9 source) */
