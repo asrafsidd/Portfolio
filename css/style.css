@@ -668,8 +668,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   width: 280px;
   height: 280px;
   border-radius: var(--radius-md);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: #0a0d14;
 }
 @media (max-width: 960px) { .proj__ongoing-img { width: 220px; height: 220px; } }
 @media (max-width: 720px) {
