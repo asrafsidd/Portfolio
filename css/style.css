@@ -726,7 +726,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   .proj:has(.proj__figures) .proj__header     { grid-area: head; margin-bottom: 0.4rem; }
   .proj:has(.proj__figures) .proj__desc       { grid-area: desc; max-width: none; margin-bottom: 0.6rem; }
   .proj:has(.proj__figures) .proj__highlights { grid-area: high; max-width: none; margin-bottom: 0; }
-  .proj:has(.proj__figures) .proj__figures    { grid-area: figs; grid-template-columns: repeat(2, 1fr); }
+  .proj:has(.proj__figures) .proj__figures    { grid-area: figs; grid-template-columns: 1fr; align-content: start; }
   .proj:has(.proj__figures) .proj__fig--hero  { grid-column: 1 / -1; }
 }
 
@@ -792,8 +792,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   gap: 1rem;
 }
 .proj__figures--one  { grid-template-columns: 1fr; }
-.proj__figures--two  { grid-template-columns: repeat(2, 1fr); }
-.proj__figures--three { grid-template-columns: repeat(3, 1fr); }
+.proj__figures--two  { grid-template-columns: 1fr; }
+.proj__figures--three { grid-template-columns: 1fr; }
 
 .proj__fig {
   margin: 0;
