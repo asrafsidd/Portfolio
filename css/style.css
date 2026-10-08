@@ -688,6 +688,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   transition: background 0.2s;
 }
 .proj__yt-thumb:hover .proj__yt-play { background: var(--accent); }
+.proj__yt-thumb { max-width: 380px; }
 .proj__yt-thumb img { width: 100%; border-radius: var(--radius-md); display: block; }
 
 /* Video inside proj figure */
