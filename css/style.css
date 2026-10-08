@@ -640,80 +640,89 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 
 /* ---------- Projects ---------- */
 .proj {
-  margin-bottom: 2rem;
-  padding: 1.6rem 1.8rem 1.8rem;
+  margin-bottom: 1.8rem;
+  padding: 1.8rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: border-color var(--transition), box-shadow var(--transition);
-  position: relative;
 }
 .proj:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
 .proj:last-child { margin-bottom: 0; }
+.proj--ongoing { border-left: 3px solid #f5a623; }
 
-/* Ongoing project — text left, banner image right */
-.proj--ongoing {
-  border-left: 3px solid #f5a623;
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-}
-.proj__ongoing-content {
-  flex: 1 1 0;
-  min-width: 0;
-}
-.proj__ongoing-img {
-  flex-shrink: 0;
-  display: block;
-  width: 280px;
-  height: 280px;
-  border-radius: var(--radius-md);
-  object-fit: contain;
-  object-position: center;
-  background: #0a0d14;
-}
-@media (max-width: 960px) { .proj__ongoing-img { width: 220px; height: 220px; } }
-@media (max-width: 720px) {
-  .proj--ongoing { flex-direction: column; }
-  .proj__ongoing-img { width: 100%; height: 220px; }
-}
-
-/* YouTube thumbnail overlay for project figures */
-.proj__yt-thumb { position: relative; display: block; }
-.proj__yt-play {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 56px; height: 56px; border-radius: 50%;
-  background: rgba(0,0,0,0.65); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-}
-.proj__yt-thumb:hover .proj__yt-play { background: var(--accent); }
-.proj__yt-thumb img { width: 100%; border-radius: var(--radius-md); display: block; }
-
-/* Video inside proj figure */
-.proj__video { width: 100%; border-radius: var(--radius-md); display: block; max-height: 360px; object-fit: cover; }
-
-/* Projects with figures: text left / images right (desktop only) */
-@media (min-width: 961px) {
-  .proj:has(.proj__figures) {
+/* Uniform two-column layout: text | media (same size for every project) */
+@media (min-width: 721px) {
+  .proj {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-    grid-template-areas:
-      "head figs"
-      "desc figs"
-      "high figs";
-    column-gap: 2.4rem;
-    row-gap: 0.6rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: center;
   }
-  .proj:has(.proj__figures) .proj__header     { grid-area: head; margin-bottom: 0.4rem; }
-  .proj:has(.proj__figures) .proj__desc       { grid-area: desc; max-width: none; margin-bottom: 0.6rem; }
-  .proj:has(.proj__figures) .proj__highlights { grid-area: high; max-width: none; margin-bottom: 0; }
-  .proj:has(.proj__figures) .proj__figures    { grid-area: figs; grid-template-columns: repeat(2, 1fr); }
-  .proj:has(.proj__figures) .proj__fig--hero  { grid-column: 1 / -1; }
-  /* Gripper projects (YouTube thumb): narrower image column, image fills it with no gap */
-  .proj:has(.proj__yt-thumb) { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.85fr); }
 }
+
+.proj__content { min-width: 0; }
+.proj__media { min-width: 0; width: 100%; }
+
+/* Fixed-size media box — identical 16:9 frame across all projects */
+.proj__media-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0a0d18;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+a.proj__media-box:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+.proj__media-box img,
+.proj__media-box video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+/* Images: contain so composite research figures are never cropped */
+.proj__media-box img { object-fit: contain; }
+/* Video fills the frame */
+.proj__media-box video { object-fit: cover; }
+a.proj__media-box:hover img { transform: scale(1.02); }
+.proj__media-box--contain { background: #0a0d14; }
+/* YouTube thumbnails fill the frame (16:9 source) */
+.proj__media-box--yt img { object-fit: cover; }
+
+/* Two images sharing one media frame (project 5) */
+.proj__media-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  aspect-ratio: 16 / 9;
+}
+.proj__media-duo .proj__media-box { aspect-ratio: auto; height: 100%; }
+
+/* YouTube play overlay */
+.proj__media-box--yt .proj__yt-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 54px; height: 54px; border-radius: 50%;
+  background: rgba(0,0,0,0.6); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1; transition: background 0.2s;
+}
+a.proj__media-box--yt:hover .proj__yt-play { background: var(--accent); }
+
+/* Caption below media — single line, consistent for all */
+.proj__media-cap {
+  display: block;
+  padding-top: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+.proj__media-cap a { color: var(--accent); text-decoration: none; }
+.proj__media-cap a:hover { text-decoration: underline; }
 
 .proj__header {
   display: flex; align-items: flex-start; gap: 1.2rem;
@@ -752,7 +761,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 }
 .proj__highlights {
   list-style: none; padding: 0;
-  margin: 0 0 1.6rem;
+  margin: 0;
   max-width: 820px;
 }
 .proj__highlights li {
@@ -768,66 +777,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 6px var(--accent);
-}
-
-/* --- Figure grid --- */
-.proj__figures {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-.proj__figures--one  { grid-template-columns: 1fr; }
-.proj__figures--two  { grid-template-columns: repeat(2, 1fr); }
-.proj__figures--three { grid-template-columns: repeat(3, 1fr); }
-
-.proj__fig {
-  margin: 0;
-}
-.proj__fig--hero {
-  grid-column: 1 / -1;
-}
-.proj__fig a {
-  display: block;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #0a0d18;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-.proj__fig a:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-md);
-}
-.proj__fig img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.proj__fig--hero img {
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  background: #f5f5f5;
-}
-[data-theme="dark"] .proj__fig--hero img {
-  background: #0a0d18;
-}
-.proj__fig:not(.proj__fig--hero) img {
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  background: #f5f5f5;
-}
-[data-theme="dark"] .proj__fig:not(.proj__fig--hero) img {
-  background: #0a0d18;
-}
-.proj__fig a:hover img { transform: scale(1.03); }
-
-.proj__fig figcaption {
-  padding: 0.5rem 0.2rem 0;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.2px;
 }
 
 /* ---------- Research / Publications ---------- */
@@ -1131,9 +1080,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   .hero__scroll { display: none; }
   .hero__inner { grid-template-columns: 1fr; gap: 2.6rem; }
   .hero__col--visual { order: -1; max-width: 480px; width: 100%; margin-inline: auto; }
-  .proj__figures { grid-template-columns: repeat(2, 1fr); }
-  .proj__fig--hero { grid-column: 1 / -1; }
-  .proj { padding: 1.6rem 1.4rem 1.8rem; }
+  .proj { padding: 1.6rem; gap: 1.6rem; }
 
   /* Show hamburger from tablet down (8 nav items squeeze at 960px) */
   .nav {
@@ -1169,11 +1116,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   .pres-grid { grid-template-columns: 1fr; }
   .awards__grid { grid-template-columns: 1fr; }
   .skills__grid { grid-template-columns: 1fr; }
-  .proj__figures,
-  .proj__figures--two,
-  .proj__figures--three { grid-template-columns: 1fr; }
-  .proj__fig--hero { grid-column: auto; }
-  .proj { padding: 1.3rem 1rem 1.5rem; }
+  .proj { padding: 1.3rem; }
+  .proj__media { margin-top: 1.2rem; }
   .proj__title { font-size: 1.15rem; }
   .proj__header { gap: 0.8rem; }
   .proj__num { font-size: 1.6rem; }
