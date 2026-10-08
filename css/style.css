@@ -689,10 +689,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 }
 .proj__yt-thumb:hover .proj__yt-play { background: var(--accent); }
 .proj__yt-thumb img { width: 100%; border-radius: var(--radius-md); display: block; }
-/* Smaller gripper thumbnails only on wide desktop grid; full width when stacked */
-@media (min-width: 961px) {
-  .proj__yt-thumb { max-width: 380px; }
-}
 
 /* Video inside proj figure */
 .proj__video { width: 100%; border-radius: var(--radius-md); display: block; max-height: 360px; object-fit: cover; }
@@ -715,6 +711,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
   .proj:has(.proj__figures) .proj__highlights { grid-area: high; max-width: none; margin-bottom: 0; }
   .proj:has(.proj__figures) .proj__figures    { grid-area: figs; grid-template-columns: repeat(2, 1fr); }
   .proj:has(.proj__figures) .proj__fig--hero  { grid-column: 1 / -1; }
+  /* Gripper projects (YouTube thumb): narrower image column, image fills it with no gap */
+  .proj:has(.proj__yt-thumb) { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.85fr); }
 }
 
 .proj__header {
