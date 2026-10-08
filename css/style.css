@@ -686,6 +686,9 @@ a.proj__media-box:hover { border-color: var(--accent); box-shadow: var(--shadow-
 }
 /* Images: contain so composite research figures are never cropped */
 .proj__media-box img { object-fit: contain; }
+/* White-background research figures: frame them cleanly on white, like journal panels */
+.proj__media-box--figure { background: #fff; border-color: color-mix(in srgb, var(--border) 60%, #fff); }
+.proj__media-box--figure img { object-fit: contain; padding: 10px; box-sizing: border-box; }
 /* Video fills the frame */
 .proj__media-box video { object-fit: cover; }
 /* ANDBot clip has baked-in black on the right; zoom from the left to crop it out */
