@@ -542,7 +542,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
 @media (min-width: 961px) { .about__card { padding-left: 4.5rem; } }
 .about__text p { color: var(--text-muted); margin-bottom: 1.2rem; text-align: justify; }
-.about__text strong { color: var(--text); font-weight: 400; }
+.about__text strong { color: inherit; font-weight: 400; }
 
 .about__stats {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
