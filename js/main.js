@@ -189,7 +189,7 @@
       canvas.style.height = H + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const density = Math.min(90, Math.floor((W * H) / 22000));
+      const density = Math.min(55, Math.floor((W * H) / 34000));
       nodes = [];
       for (let i = 0; i < density; i++) {
         nodes.push({
@@ -348,6 +348,25 @@
       });
     }, { threshold: 0.35 });
     videoFrames.forEach(frame => autoplayObserver.observe(frame));
+  }
+
+  /* ---------- Lazy-load heavy videos (load + play only when in view) ---------- */
+  const lazyVideos = $$('.lazy-video');
+  if (lazyVideos.length) {
+    const lazyVideoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.getAttribute('src') && video.dataset.src) {
+            video.src = video.dataset.src;
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '200px 0px' });
+    lazyVideos.forEach(v => lazyVideoObserver.observe(v));
   }
 
   /* ---------- Footer Year ---------- */
