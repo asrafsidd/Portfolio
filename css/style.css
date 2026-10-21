@@ -919,6 +919,8 @@ a.proj__media-box--yt:hover .proj__yt-play { background: var(--accent); }
   margin-left: 1.2rem;
 }
 .pub-list__thumb { width: 100%; display: block; object-fit: cover; aspect-ratio: 16/9; }
+.pub-list__thumb-link--figure { background: #fff; }
+.pub-list__thumb-link--figure .pub-list__thumb { object-fit: contain; padding: 6px; box-sizing: border-box; }
 .pub-list__thumb-play {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 46px; height: 46px; border-radius: 50%;
